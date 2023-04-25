@@ -1,0 +1,30 @@
+NAME	= fixed
+SRCS	= main.cpp Fixed.cpp 
+	
+CC		= g++
+FLAGS	= -Wall -Wextra -Werror -std=c++98
+
+GREEN		=	\e[92;5;118m
+YELLOW		=	\e[93;5;226m
+GRAY		=	\e[33;2;37m
+RESET		=	\e[0m
+CURSIVE		=	\e[33;3m
+
+.PHONY: all clean re
+
+all: $(NAME)
+
+$(NAME): 
+	@printf "$(CURSIVE)$(GRAY) 	- Compiling $(NAME)... $(RESET)\n"
+	@ $(CC) $(FLAGS) $(SRCS) -o $(NAME)
+	@printf "$(GREEN)    - Executable ready.\n$(RESET)"
+
+clean:
+	@rm $(NAME)
+	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
+
+fclean:
+	@rm $(NAME)
+	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
+
+re: clean all
