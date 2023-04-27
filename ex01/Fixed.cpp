@@ -5,6 +5,11 @@ Fixed::Fixed( void ) : value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
+Fixed::Fixed( const int valueInt ) : value(valueInt)
+{
+	std::cout << "Int constructor called" << std::endl;
+}
+
 Fixed::Fixed( const Fixed &obj ) : value(obj.value)
 {
 	std::cout << "Copy constructor called" << std::endl;
@@ -27,7 +32,12 @@ void	Fixed::setRawBits( int const raw )
 	this->value = raw;
 }
 
-Fixed::operator=()
+float	Fixed::toFloat( void ) const
 {
 
+}
+
+int		Fixed::toInt( void ) const
+{
+	
 }
