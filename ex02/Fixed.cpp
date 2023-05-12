@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:37:31 by blaurent          #+#    #+#             */
-/*   Updated: 2023/05/03 14:19:49 by blaurent         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:16:40 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 
 Fixed::Fixed( void ) : value(0)
 {
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed( const Fixed &obj ) : value(obj.value)
 {
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::Fixed( const int nbr ) : value( nbr << this->fractionalBits )
 {
+	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed( const float nbr ) : value( roundf(nbr * (1 << this->fractionalBits)) )
 {
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed( void )
 {
+	std::cout << "Destructor called" << std::endl;
 }
 
 std::ostream & operator<<( std::ostream & output, Fixed const & obj )
@@ -62,6 +67,11 @@ Fixed& Fixed::operator=(const Fixed &rhs)
 {
 	this->value = rhs.getRawBits();
 	return(*this);
+}
+
+bool Fixed::operator>(const Fixed &rhs) const
+{
+	return(this->getRawBits() > rhs.getRawBits());
 }
 
 bool Fixed::operator<(const Fixed &rhs) const
